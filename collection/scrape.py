@@ -3,7 +3,7 @@ from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 from loguru import logger
-from util.gen_date import get_numerical_date
+from util import gen_date
 
 
 class Scrape():
@@ -96,7 +96,7 @@ class Scrape():
                     # find date
                     if ',' and '20' in line:
                         if len(line.strip()) <= 18:
-                            date_string = get_numerical_date(line.strip())
+                            date_string = gen_date.get_numerical_date(line.strip())
                             dat_list = date_string.split('-')
                             curr_review_datetime = datetime(int(dat_list[2]), int(dat_list[0]), int(dat_list[1]))
                     # find category
